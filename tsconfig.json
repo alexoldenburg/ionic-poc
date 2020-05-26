@@ -14,7 +14,21 @@
     "lib": [
       "es2018",
       "dom"
-    ]
+    ],
+    "paths": {
+      "playback": [
+        "dist/playback/playback",
+        "dist/playback"
+      ],
+      "live": [
+        "dist/live/live",
+        "dist/live"
+      ],
+      "libname": [
+        "dist/libname/libname",
+        "dist/libname"
+      ]
+    }
   },
   "angularCompilerOptions": {
     "fullTemplateTypeCheck": true,

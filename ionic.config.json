@@ -1,0 +1,11 @@
+{
+    "defaultProject": "poc",
+    "projects": {
+        "poc": {
+            "name": "My App",
+            "integrations": {},
+            "type": "angular",
+            "root": "src"
+        }
+    }
+}

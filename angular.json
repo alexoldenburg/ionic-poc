@@ -25,10 +25,45 @@
             "aot": true,
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "**/*.svg",
+                "input": "node_modules/ionicons/dist/ionicons/svg",
+                "output": "./svg"
+              }
             ],
             "styles": [
-              "src/styles.less"
+              "src/styles.less",
+              {
+                "input": "node_modules/@ionic/angular/css/normalize.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/structure.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/typography.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/core.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/padding.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/float-elements.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-alignment.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-transformation.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/flex-utils.css"
+              },
+              {
+                "input": "src/theme/variables.css"
+              }
             ],
             "scripts": []
           },
@@ -121,8 +156,153 @@
               "devServerTarget": "poc:serve:production"
             }
           }
+        },
+        "ionic-cordova-serve": {
+          "builder": "@ionic/angular-toolkit:cordova-serve",
+          "options": {
+            "cordovaBuildTarget": "poc:ionic-cordova-build",
+            "devServerTarget": "poc:serve"
+          },
+          "configurations": {
+            "production": {
+              "cordovaBuildTarget": "poc:ionic-cordova-build:production",
+              "devServerTarget": "poc:serve:production"
+            }
+          }
+        },
+        "ionic-cordova-build": {
+          "builder": "@ionic/angular-toolkit:cordova-build",
+          "options": {
+            "browserTarget": "poc:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "poc:build:production"
+            }
+          }
         }
       }
-    }},
+    },
+    "playback": {
+      "projectType": "library",
+      "root": "projects/playback",
+      "sourceRoot": "projects/playback/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/playback/tsconfig.lib.json",
+            "project": "projects/playback/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/playback/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/playback/src/test.ts",
+            "tsConfig": "projects/playback/tsconfig.spec.json",
+            "karmaConfig": "projects/playback/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/playback/tsconfig.lib.json",
+              "projects/playback/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "live": {
+      "projectType": "library",
+      "root": "projects/live",
+      "sourceRoot": "projects/live/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/live/tsconfig.lib.json",
+            "project": "projects/live/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/live/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/live/src/test.ts",
+            "tsConfig": "projects/live/tsconfig.spec.json",
+            "karmaConfig": "projects/live/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/live/tsconfig.lib.json",
+              "projects/live/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "libname": {
+      "projectType": "library",
+      "root": "projects/libname",
+      "sourceRoot": "projects/libname/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/libname/tsconfig.lib.json",
+            "project": "projects/libname/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/libname/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/libname/src/test.ts",
+            "tsConfig": "projects/libname/tsconfig.spec.json",
+            "karmaConfig": "projects/libname/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/libname/tsconfig.lib.json",
+              "projects/libname/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
   "defaultProject": "poc"
 }
