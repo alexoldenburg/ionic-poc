@@ -7,7 +7,7 @@ import {routes} from './app-router.routes';
     declarations: [],
     imports: [
         CommonModule,
-        RouterModule.forRoot( routes, {useHash: true, enableTracing: true})
+        RouterModule.forRoot( routes, { useHash: true, enableTracing: true, relativeLinkResolution: 'legacy' })
     ],
     exports: [RouterModule]
 })
